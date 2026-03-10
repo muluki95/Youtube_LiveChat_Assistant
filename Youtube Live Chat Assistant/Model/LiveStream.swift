@@ -5,7 +5,7 @@
 //  Created by Esther Nzomo on 3/10/26.
 //
 
-struct LiveStream: Codable {
+struct LiveStream: Identifiable {
     let id: String
     let title: String
     let host: String
