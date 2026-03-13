@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var streamURL: String = ""
     var body: some View {
         
         @StateObject var viewModel = LiveChatViewModel()
@@ -18,27 +19,22 @@ struct HomeView: View {
                     .fontWeight(.bold)
                 Spacer()
                 
-                TextField("Enter Live Stream URL", text: $viewModel.streamURL)
+                TextField("Paste Live Stream URL", text: $streamURL)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
                 
-                Button("Open Live Stream"){
-                    viewModel.openStream()
-                    
-                }
-                .buttonStyle(PlainButtonStyle())
                 
-                if viewModel.isLoading{
-                    ProgressView("Loading Stream...")
-                        .padding()
-                }
+                NavigationLink(destination: LiveStreamView (streamURL: streamURL)
                 
-                Spacer()
-                NavigationLink(destination: LiveStreamView (url: viewModel.streamURL),
-                isActive: $viewModel.navigateToStream
                 ){
-                    EmptyView()
+                    Text("Open Live Stream")
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                 }
+                .disabled(streamURL.isEmpty)
             }
             .padding()
             
