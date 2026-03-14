@@ -7,7 +7,7 @@
 import Foundation
 
 class LiveChatViewModel: ObservableObject  {
-    
+    @Published var streamURL: String = ""
     @Published var isLoading: Bool = false
     @Published var navigateToStream: Bool = false
     

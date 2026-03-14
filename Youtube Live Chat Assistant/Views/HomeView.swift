@@ -35,6 +35,7 @@ struct HomeView: View {
                             .cornerRadius(10)
                 }
                 .disabled(streamURL.isEmpty)
+                Spacer()
             }
             .padding()
             

@@ -13,9 +13,15 @@ struct LiveStreamView: View {
         VStack{
             
             //WebView()
+            WebView(urlString: streamURL)
+                .frame(width:.infinity, height: 250)
             
             //ChatView()
+            ChatView()
         }
         
     }
+}
+#Preview{
+    LiveStreamView(streamURL: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 }
