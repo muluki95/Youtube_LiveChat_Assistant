@@ -23,5 +23,5 @@ struct LiveStreamView: View {
     }
 }
 #Preview{
-    LiveStreamView(streamURL: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+    LiveStreamView(streamURL: "https://www.youtube.com/embed/aqz-KE-bpKQ")
 }

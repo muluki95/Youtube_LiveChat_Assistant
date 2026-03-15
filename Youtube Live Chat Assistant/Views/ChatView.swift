@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ChatView: View {
     @State var chatInput: String = ""
+    @StateObject var viewModel = ChatViewModel()
     
-    var messages: [ChatMessage] = ChatMessage.mockMessages
+    //var messages: [ChatMessage] = ChatMessage.mockMessages
+    
     var body: some View {
         VStack(spacing: 0) {
          
             ScrollView {
-                ForEach(messages) { message in
+                ForEach(viewModel.messages) { message in
                     ChatMessageRow(message: message) { user in
                         chatInput = "@\(user.username)"
                         
@@ -25,12 +27,16 @@ struct ChatView: View {
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            HStack() {
+            HStack {
                 TextField("Type your message...", text: $chatInput)
-                Button("Send"){
-                   // button logic
+                    .textFieldStyle(.roundedBorder)
+                    .frame(maxWidth: .infinity)
+
+                Button("Send") {
+                    viewModel.sendMessage( chatInput, .mary)
+                    // clears the input field after sending
+                    chatInput = ""
                 }
-            
             }
             .padding()
 
