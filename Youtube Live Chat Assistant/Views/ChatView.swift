@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
     @State var chatInput: String = ""
+    @State var suggestions:[ChatUser] = []
     @StateObject var viewModel = ChatViewModel()
     
     //var messages: [ChatMessage] = ChatMessage.mockMessages
@@ -19,7 +20,9 @@ struct ChatView: View {
             ScrollView {
                 ForEach(viewModel.messages) { message in
                     ChatMessageRow(message: message) { user in
-                        chatInput = "@\(user.username)"
+                        if !chatInput.contains("@ \(user.username)"){
+                            chatInput = "@\(user.username)"
+                        }
                         
                     }
                     
@@ -40,7 +43,22 @@ struct ChatView: View {
             }
             .padding()
 
-            
+            if !suggestions.isEmpty {
+                ScrollView(.horizontal){
+                    HStack{
+                        ForEach(suggestions){ user in
+                            Button("@\(user.username)"){
+                                chatInput += "@\(user.username)"
+                                suggestions = []
+                                
+                            }
+                            .padding(4)
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(8)
+                        }
+                    }
+                }
+            }
             
         }
         .padding(.horizontal)

@@ -5,6 +5,8 @@
 //  Created by Esther Nzomo on 3/14/26.
 //
 import SwiftUI
+import Kingfisher
+
 
 
 struct ChatMessageRow: View {
@@ -13,17 +15,41 @@ struct ChatMessageRow: View {
     
     var body: some View {
         HStack(){
-            Text(message.user.username)
-                .fontWeight(.bold)
-                .foregroundColor(.blue)
-                .onLongPressGesture {
-                    onTagUser(message.user)
-                }
-            Text(message.message)
+            if let url = message.user.profileImageURL,
+               let imageURL = URL(string: url) {
+
+                KFImage(imageURL)
+                    .placeholder {
+                        Circle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: 30, height: 30)
+                    }
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .clipShape(Circle())
+
+            } else {
+
+                Circle()
+                    .fill(Color.gray)
+                    .frame(width: 30, height: 30)
+
+            }
             
-            Spacer()
+            VStack{
+                Text(message.user.username)
+                    .fontWeight(.bold)
+                    .foregroundColor(.blue)
+                    .onLongPressGesture {
+                        onTagUser(message.user)
+                    }
+                Text(highlightedText(message.message))
+            }
+        Spacer()
+            
         }
         .padding(.vertical, 5)
+        .padding(.horizontal)
         
     }
     
