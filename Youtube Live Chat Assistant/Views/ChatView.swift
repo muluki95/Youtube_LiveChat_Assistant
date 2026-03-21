@@ -34,6 +34,7 @@ struct ChatView: View {
                 TextField("Type your message...", text: $chatInput)
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: .infinity)
+                    .autocapitalization(.none)
 
                 Button("Send") {
                     viewModel.sendMessage( chatInput, .mary)

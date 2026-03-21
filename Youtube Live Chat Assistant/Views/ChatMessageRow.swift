@@ -13,10 +13,7 @@ struct ChatMessageRow: View {
     let message: ChatMessage
     var onTagUser:(ChatUser) -> Void
     @EnvironmentObject var viewModel: ChatViewModel
-    var isMentioned: Bool {
-        guard let mentions = message.mentions else {return false}
-        return mentions.contains(viewModel.currentUser)
-    }
+    
     
     
     var body: some View {
@@ -50,11 +47,7 @@ struct ChatMessageRow: View {
                         onTagUser(message.user)
                     }
                 
-                if isMentioned {
-                    Text("@You")
-                        .font(.caption)
-                        .foregroundColor(.orange)
-                }
+                
                 Text(viewModel.highlightedText(message.message))
                 
             }
@@ -64,7 +57,6 @@ struct ChatMessageRow: View {
         }
         .padding(.vertical, 5)
         .padding(.horizontal)
-        .background(isMentioned ? Color.yellow.opacity(0.2) : Color.clear)
         .cornerRadius(8)
         
     }

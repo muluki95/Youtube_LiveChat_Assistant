@@ -20,7 +20,7 @@ extension ChatMessage {
                     id: "m1",
                     user: .john,
                     message: "Hello everyone!",
-                    mentions: nil
+                    mentions: [.mary]
                 ),
                 
                 ChatMessage(

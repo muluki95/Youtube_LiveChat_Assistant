@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var streamURL: String = ""
+    @EnvironmentObject var viewModel: ChatViewModel
     var body: some View {
         
         @StateObject var viewModel = LiveChatViewModel()
@@ -47,4 +48,5 @@ struct HomeView: View {
 
 #Preview{
     HomeView()
+        .environmentObject(ChatViewModel())
 }

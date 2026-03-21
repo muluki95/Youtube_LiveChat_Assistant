@@ -9,7 +9,7 @@ import Foundation
 class ChatViewModel: ObservableObject {
     @Published var messages: [ChatMessage] = ChatMessage.mockMessages
     @Published var suggestions: [ChatUser] = []
-    @Published var currentUser: ChatUser = ChatUser(id: UUID().uuidString, username: "Alex", profileImageURL: nil)
+    @Published var currentUser: ChatUser = .mary
     
     
     var allUsers: [ChatUser] {
@@ -27,14 +27,22 @@ class ChatViewModel: ObservableObject {
         guard !trimmed.isEmpty else {
             return
         }
-        //convert to lowercase
-        let lowercased = trimmed.lowercased()
         
         let mentionedUsers = extractMentions(from: trimmed)
         
+        var cleanedMessage = trimmed
+        
+        for mentionedUser in mentionedUsers {
+            cleanedMessage = cleanedMessage.replacingOccurrences(
+                    of: "@\(mentionedUser.username)",
+                    with: mentionedUser.username,
+                    options: .caseInsensitive
+            )
+        }
+        
         let newMessage = ChatMessage(id: UUID().uuidString,
                                      user: user,
-                                     message: lowercased,
+                                     message: cleanedMessage,
                                      mentions: mentionedUsers)
         messages.append(newMessage)
     }
@@ -64,7 +72,7 @@ class ChatViewModel: ObservableObject {
         var attributed = AttributedString(message)
         
         for user in allUsers {
-            let mention = "@\(user.username)"
+            let mention = user.username
             
             if let range = attributed.range(of: mention, options: .caseInsensitive){
                 attributed[range].foregroundColor = .blue

@@ -8,6 +8,7 @@ import SwiftUI
 struct LiveStreamView: View {
     
     let streamURL: String
+    @EnvironmentObject var viewModel: ChatViewModel
     
     var body: some View {
         VStack{
@@ -24,4 +25,5 @@ struct LiveStreamView: View {
 }
 #Preview{
     LiveStreamView(streamURL: "https://www.youtube.com/embed/aqz-KE-bpKQ")
+        .environmentObject(ChatViewModel())
 }
