@@ -10,14 +10,7 @@ struct ChatUser: Identifiable, Hashable {
     let username: String
     let profileImageURL: String?
     
-    func hash(into hasher: inout Hasher){
-        hasher.combine(id)             //a user is uniquely identified by their id
-        
-    }
     
-    static func == (lhs: ChatUser, rhs: ChatUser) -> Bool {
-        lhs.id == rhs.id
-    }
 }
 
 

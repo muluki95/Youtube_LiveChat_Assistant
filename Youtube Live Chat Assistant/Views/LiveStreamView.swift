@@ -24,6 +24,6 @@ struct LiveStreamView: View {
     }
 }
 #Preview{
-    LiveStreamView(streamURL: "https://www.youtube.com/embed/aqz-KE-bpKQ")
+    LiveStreamView(streamURL: "https://www.youtube.com/watch?v=lhPwZmRPEeY")
         .environmentObject(ChatViewModel())
 }
