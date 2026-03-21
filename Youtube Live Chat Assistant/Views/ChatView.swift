@@ -10,7 +10,7 @@ import SwiftUI
 struct ChatView: View {
     @State var chatInput: String = ""
     @State var suggestions:[ChatUser] = []
-    @StateObject var viewModel = ChatViewModel()
+    @EnvironmentObject var viewModel: ChatViewModel
     
     //var messages: [ChatMessage] = ChatMessage.mockMessages
     
@@ -69,4 +69,5 @@ struct ChatView: View {
 
 #Preview{
     ChatView()
+        .environmentObject(ChatViewModel())
 }

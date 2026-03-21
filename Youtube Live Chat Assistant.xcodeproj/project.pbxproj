@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D7B04F962F6EDED800816F4E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D7B04F952F6EDED800816F4E /* Kingfisher */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D7B04E792F60730C00816F4E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7B04F962F6EDED800816F4E /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 				D7B04E6D2F60730C00816F4E /* Youtube Live Chat Assistant */,
 				D7B04E7B2F60730C00816F4E /* Youtube Live Chat AssistantTests */,
 				D7B04E852F60730C00816F4E /* Youtube Live Chat AssistantUITests */,
+				D7B04F942F6EDED800816F4E /* Frameworks */,
 				D7B04E6C2F60730C00816F4E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +96,13 @@
 				D7B04E822F60730C00816F4E /* Youtube Live Chat AssistantUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D7B04F942F6EDED800816F4E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +125,7 @@
 			);
 			name = "Youtube Live Chat Assistant";
 			packageProductDependencies = (
+				D7B04F952F6EDED800816F4E /* Kingfisher */,
 			);
 			productName = "Youtube Live Chat Assistant";
 			productReference = D7B04E6B2F60730C00816F4E /* Youtube Live Chat Assistant.app */;
@@ -564,6 +578,14 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D7B04F952F6EDED800816F4E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D7B04F212F68AC6C00816F4E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D7B04E632F60730C00816F4E /* Project object */;
 }

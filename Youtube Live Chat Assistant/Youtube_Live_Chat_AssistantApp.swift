@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Youtube_Live_Chat_AssistantApp: App {
+    @StateObject var viewModel = ChatViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
     }
 }

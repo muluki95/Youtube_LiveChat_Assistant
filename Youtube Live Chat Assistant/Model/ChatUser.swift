@@ -5,7 +5,7 @@
 //  Created by Esther Nzomo on 3/10/26.
 //
 
-struct ChatUser: Identifiable {
+struct ChatUser: Identifiable, Hashable {
     let id: String
     let username: String
     let profileImageURL: String?
